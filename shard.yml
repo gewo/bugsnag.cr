@@ -1,0 +1,13 @@
+name: bugsnag
+version: 0.1.0
+
+authors:
+  - Gebhard Woestemeyer <g@ctr.lc>
+
+targets:
+  bugsnag:
+    main: src/bugsnag.cr
+
+crystal: 0.20.4
+
+license: MIT
