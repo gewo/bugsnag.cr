@@ -16,3 +16,7 @@ development_dependencies:
   webmock:
     git: https://github.com/manastech/webmock.cr
     branch: master
+
+  sidekiq:
+    git: https://github.com/mperham/sidekiq.cr
+    branch: master
