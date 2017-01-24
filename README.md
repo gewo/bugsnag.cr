@@ -1,27 +1,42 @@
-# bugsnag
+# bugsnag.cr
 
-TODO: Write a description here
+Minimal [bugsnag][bugsnag] exception notifier and [sidekiq.cr][sidekiq.cr] 
+middleware for [crystal][crystal].
 
-## Installation
-
-TODO: Write installation instructions here
+[bugsnag.cr][bugsnag.cr] is heavily inspired by (read: stolen)
+[airbrake-crystal][airbrake-crystal]. Thanks.
 
 ## Usage
 
-TODO: Write usage instructions here
+Reporting handled exceptions
 
-## Development
+    begin
+      raise 'Something went wrong!'
+    rescue => exception
+      Bugsnag.notify(exception)
+    end
 
-TODO: Write development instructions here
+## Configuration
 
-## Contributing
+    require "bugsnag"
 
-1. Fork it ( https://github.com/gewo/bugsnag/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
+    Bugsnag.configure do |config|
+      config.api_key = 'YOUR_API_KEY_HERE'
+    end
 
-## Contributors
+## Installation
 
-- [gewo](https://github.com/gewo) Gebhard Woestemeyer - creator, maintainer
+Add [bugsnag.cr][bugsnag.cr] as a dependency in ``shards.yml``::
+
+  dependencies:
+    bugsnag:
+      github: gewo/bugsnar.cr
+      branch: master
+
+Run ``shards update`` to download.
+
+[bugsnag.cr]: https://github.com/gewo/bugsnag.cr/
+[bugsnag]: https://bugsnag.com/
+[crystal]: https://crystal-lang.org/
+[sidekiq.cr]: https://github.com/mperham/sidekiq.cr/
+[airbrake-crystal]: https://github.com/kyrylo/airbrake-crystal/

@@ -11,3 +11,8 @@ targets:
 crystal: 0.20.4
 
 license: MIT
+
+development_dependencies:
+  webmock:
+    git: https://github.com/manastech/webmock.cr
+    branch: master
