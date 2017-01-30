@@ -1,4 +1,4 @@
-FROM crystallang/crystal:0.20.1
+FROM crystallang/crystal:0.20.5
 MAINTAINER Gebhard Woestemeyer <g@ctr.lc>
 
 RUN sed -i.orig -e 's/httpredir/ftp.de/g' /etc/apt/sources.list
