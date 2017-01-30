@@ -1,19 +1,26 @@
 # bugsnag.cr
 
-Minimal [bugsnag][bugsnag] exception notifier and [sidekiq.cr][sidekiq.cr] 
-middleware for [crystal][crystal].
+Minimal [bugsnag][] exception notifier and [sidekiq.cr][]
+middleware for [crystal][].
 
-[bugsnag.cr][bugsnag.cr] is heavily inspired by (read: stolen)
-[airbrake-crystal][airbrake-crystal]. Thanks.
+[bugsnag.cr][] is heavily inspired by (read: stolen)
+[airbrake-crystal][]. Thanks.
 
 ## Usage
 
-Reporting handled exceptions
+Reporting handled exceptions:
 
     begin
       raise 'Something went wrong!'
     rescue => exception
       Bugsnag.notify(exception)
+    end
+
+sidekiq middleware:
+
+    cli = Sidekiq::CLI.new
+    server = cli.configure do |config|
+      config.server_middleware.add Bugsnag::Sidekiq.new
     end
 
 ## Configuration
@@ -26,12 +33,12 @@ Reporting handled exceptions
 
 ## Installation
 
-Add [bugsnag.cr][bugsnag.cr] as a dependency in ``shards.yml``::
+Add [bugsnag.cr][bugsnag.cr] as a dependency in ``shards.yml``
 
-  dependencies:
-    bugsnag:
-      github: gewo/bugsnar.cr
-      branch: master
+    dependencies:
+      bugsnag:
+        github: gewo/bugsnar.cr
+        branch: master
 
 Run ``shards update`` to download.
 
