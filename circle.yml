@@ -12,6 +12,7 @@ dependencies:
     - docker-compose version
     - docker info
     - docker-compose build
+    - docker-compose run --rm spec shards update
 
 test:
   override:

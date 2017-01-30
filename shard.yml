@@ -8,7 +8,7 @@ targets:
   bugsnag:
     main: src/bugsnag.cr
 
-crystal: 0.20.4
+crystal: 0.20.5
 
 license: MIT
 
