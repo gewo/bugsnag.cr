@@ -1,6 +1,7 @@
 # bugsnag.cr
 
-[![CircleCI](https://circleci.com/gh/gewo/bugsnag.cr.svg?style=svg)](https://circleci.com/gh/gewo/bugsnag.cr)
+[![Build
+Status](https://travis-ci.org/gewo/bugsnag.cr.svg)](https://travis-ci.org/gewo/bugsnag.cr/)
 
 Minimal [bugsnag][] exception notifier and [sidekiq.cr][]
 middleware for [crystal][].
