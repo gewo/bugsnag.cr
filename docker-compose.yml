@@ -5,4 +5,4 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: crystal spec --debug --stats
+    command: "crystal spec --debug --stats"
