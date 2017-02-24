@@ -1,3 +1,3 @@
-FROM crystallang/crystal:0.20.5
+FROM crystallang/crystal:0.21.0
 MAINTAINER Gebhard Woestemeyer <g@ctr.lc>
 CMD ["/bin/bash"]
