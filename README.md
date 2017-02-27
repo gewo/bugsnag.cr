@@ -36,14 +36,14 @@ sidekiq middleware:
 
 ## Installation
 
-Add [bugsnag.cr][bugsnag.cr] as a dependency in ``shards.yml``
+Add [bugsnag.cr][bugsnag.cr] as a dependency in `shards.yml`
 
     dependencies:
       bugsnag:
         github: gewo/bugsnar.cr
         branch: master
 
-Run ``shards update`` to download.
+Run `shards update` to download.
 
 [bugsnag.cr]: https://github.com/gewo/bugsnag.cr/
 [bugsnag]: https://bugsnag.com/
