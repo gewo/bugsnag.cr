@@ -1,3 +1,6 @@
-language: crystal
-crystal:
-  - 0.21.0
+sudo: required
+services:
+  - docker
+script:
+  - docker-compose build
+  - docker-compose run spec
