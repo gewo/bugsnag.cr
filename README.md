@@ -14,7 +14,7 @@ middleware for [crystal][].
 Reporting handled exceptions:
 
     begin
-      raise 'Something went wrong!'
+      raise "Something went wrong!"
     rescue => exception
       Bugsnag.notify(exception)
     end
@@ -31,7 +31,7 @@ sidekiq middleware:
     require "bugsnag"
 
     Bugsnag.configure do |config|
-      config.api_key = 'YOUR_API_KEY_HERE'
+      config.api_key = "YOUR_API_KEY_HERE"
     end
 
 ## Installation
