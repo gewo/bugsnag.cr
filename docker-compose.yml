@@ -2,7 +2,5 @@ version: "2"
 services:
   spec:
     build: .
-    volumes:
-      - .:/app
     working_dir: /app
     command: "crystal spec --debug --stats"
