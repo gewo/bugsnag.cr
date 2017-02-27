@@ -11,8 +11,8 @@ describe Bugsnag do
     end
 
     it "sends notices" do
-      WebMock.stub(:post, "https://notify.bugsnag.com/").
-        with(headers: {"Content-Type" => "application/json"})
+      WebMock.stub(:post, "https://notify.bugsnag.com/")
+             .with(headers: {"Content-Type" => "application/json"})
 
       retval = Bugsnag.notify(BugsnagTestError.new)
       retval.should be_true

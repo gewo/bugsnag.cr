@@ -19,8 +19,8 @@ describe Bugsnag::Sidekiq do
     end
 
     it "notifies bugsnag about exceptions" do
-      WebMock.stub(:post, "https://notify.bugsnag.com/").
-        with(headers: {"Content-Type" => "application/json"})
+      WebMock.stub(:post, "https://notify.bugsnag.com/")
+             .with(headers: {"Content-Type" => "application/json"})
 
       begin
         Bugsnag::Sidekiq.new.call(nil, nil) do

@@ -21,7 +21,7 @@ class BugsnagTestError < Exception
       "0x44a8d9: main at /home/user/.cache/crystal/macro79937040.cr 12:15",
       "0x7f9764ac7b45: __libc_start_main at ??",
       "0x43c089: ??? at ??",
-      "0x0: ??? at ??"
+      "0x0: ??? at ??",
     ]
   end
 

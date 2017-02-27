@@ -39,34 +39,34 @@ module Bugsnag
       (exception.backtrace || [] of String).map do |stackframe|
         if m = stackframe.match(STACKFRAME_TEMPLATE)
           {
-            file: m[1]? || "<crystal>",
+            file:       m[1]? || "<crystal>",
             lineNumber: m[2]?.try(&.to_i) || 0,
-            method: "<file>"
+            method:     "<file>",
           }
         else
-          { file: stackframe, lineNumber: 0, method: "<file>" }
+          {file: stackframe, lineNumber: 0, method: "<file>"}
         end
-      end || [] of { file: String, lineNumber: Int32, method: String }
+      end || [] of {file: String, lineNumber: Int32, method: String}
     end
   end
 
   class Notice
     def initialize(exception)
       @payload = {
-        apiKey: Bugsnag.config.api_key || "",
+        apiKey:   Bugsnag.config.api_key || "",
         notifier: {
-          name: "Bugsnag Crystal",
+          name:    "Bugsnag Crystal",
           version: Bugsnag::VERSION,
-          url: "https://github.com/gewo/bugsnag.cr"
+          url:     "https://github.com/gewo/bugsnag.cr",
         },
         events: [{
           payloadVersion: "2",
-          exceptions: [{
+          exceptions:     [{
             errorClass: exception.class.name || "",
-            message: exception.message || "",
+            message:    exception.message || "",
             stacktrace: Backtrace.parse(exception),
-          }]
-        }]
+          }],
+        }],
       }
     end
 
@@ -90,7 +90,7 @@ module Bugsnag
         Bugsnag.config.uri,
         headers: HTTP::Headers{
           "Content-Type" => "application/json",
-          "User-Agent" => "Bugsnag Crystal"
+          "User-Agent"   => "Bugsnag Crystal",
         },
         body: notice.to_json)
 
@@ -101,4 +101,3 @@ module Bugsnag
   class BugsnagError < Exception
   end
 end
-
