@@ -13,6 +13,8 @@ middleware for [crystal][].
 
 Reporting handled exceptions:
 
+    require "bugsnag"
+
     begin
       raise "Something went wrong!"
     rescue => exception
@@ -20,6 +22,9 @@ Reporting handled exceptions:
     end
 
 sidekiq middleware:
+
+    require "bugsnag"
+    require "bugsnag/sidekiq"
 
     cli = Sidekiq::CLI.new
     server = cli.configure do |config|
@@ -40,8 +45,7 @@ Add [bugsnag.cr][bugsnag.cr] as a dependency in `shards.yml`
 
     dependencies:
       bugsnag:
-        github: gewo/bugsnar.cr
-        branch: master
+        github: gewo/bugsnag.cr
 
 Run `shards update` to download.
 
