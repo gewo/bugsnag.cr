@@ -1,6 +1,7 @@
 require "spec"
 require "webmock"
 require "../src/bugsnag"
+require "../src/sidekiq"
 
 Spec.before_each &->WebMock.reset
 
