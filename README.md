@@ -3,8 +3,8 @@
 [![Build
 Status](https://travis-ci.org/gewo/bugsnag.cr.svg)](https://travis-ci.org/gewo/bugsnag.cr/)
 
-Minimal [bugsnag][] exception notifier and [sidekiq.cr][]
-middleware for [crystal][].
+[bugsnag][] exception notifier written in [crystal][]. Supports
+[sidekiq.cr][], [kemal][], HTTP::Server.
 
 [bugsnag.cr][] is heavily inspired by (read: stolen)
 [airbrake-crystal][]. Thanks.
@@ -21,7 +21,7 @@ Reporting handled exceptions:
       Bugsnag.notify(exception)
     end
 
-sidekiq middleware:
+### sidekiq
 
     require "bugsnag"
     require "bugsnag/sidekiq"
@@ -30,6 +30,35 @@ sidekiq middleware:
     server = cli.configure do |config|
       config.server_middleware.add Bugsnag::Sidekiq.new
     end
+
+### HTTP::Server
+
+    require "http/server"
+    require "bugsnag"
+    require "bugsnag/http_handler"
+
+    server = HTTP::Server.new("0.0.0.0", 1337,
+      [
+        Bugsnag::HttpHandler.new
+      ]) do |context|
+        raise "narf"
+    end
+
+    server.listen
+
+### Kemal
+
+    require "kemal"
+    require "bugsnag"
+    require "bugsnag/http_handler"
+
+    add_handler Bugsnag::HttpHandler.new
+
+    get "/" do |env|
+      raise "narf"
+    end
+
+    Kemal.run
 
 ## Configuration
 
@@ -52,5 +81,6 @@ Run `shards update` to download.
 [bugsnag.cr]: https://github.com/gewo/bugsnag.cr/
 [bugsnag]: https://bugsnag.com/
 [crystal]: https://crystal-lang.org/
+[kemal]: http://kemalcr.com
 [sidekiq.cr]: https://github.com/mperham/sidekiq.cr/
 [airbrake-crystal]: https://github.com/kyrylo/airbrake-crystal/
