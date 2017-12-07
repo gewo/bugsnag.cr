@@ -60,7 +60,10 @@ module Bugsnag
           url:     "https://github.com/gewo/bugsnag.cr",
         },
         events: [{
-          payloadVersion: "2",
+          payloadVersion: "4",
+          app: {
+            releaseStage: Bugsnag.config.release_stage || "production"
+          },
           exceptions:     [{
             errorClass: exception.class.name || "",
             message:    exception.message || "",
@@ -78,6 +81,7 @@ module Bugsnag
   class Config
     property api_key : String?
     property endpoint = "https://notify.bugsnag.com"
+    property release_stage = "production"
 
     def uri
       URI.parse(endpoint.to_s)
