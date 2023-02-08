@@ -17,7 +17,7 @@ Reporting handled exceptions:
 
     begin
       raise "Something went wrong!"
-    rescue => exception
+    rescue exception
       Bugsnag.notify(exception)
     end
 
